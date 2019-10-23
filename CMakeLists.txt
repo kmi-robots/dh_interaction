@@ -10,6 +10,11 @@ project(dh_interaction)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   tf
+  geometry_msgs
+  move_base_msgs
+  geometry_msgs
+  std_srvs
+  actionlib
 )
 
 ## System dependencies are found with CMake's conventions
