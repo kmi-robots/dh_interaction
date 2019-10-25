@@ -15,7 +15,8 @@ from std_srvs.srv import SetBool
 teamid = "kmirobots"
 teamkey = "0e920c05-e7a0-4745-9e94-eff7e1343b5d"
 
-waypoints = [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]
+# waypoints = [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]
+waypoints = [[6.6, 8.36], [7.6, 6.9], [11.1, 6.88], [-0.33, 2.27], [0.0, 10.0]]
 
 if __name__ == '__main__':
     rospy.init_node("simple_navigation_exploration")
@@ -35,8 +36,7 @@ if __name__ == '__main__':
         goal_pose.target_pose.header.stamp = rospy.Time.now()
         goal_pose.target_pose.pose.position.x = w[0]
         goal_pose.target_pose.pose.position.y = w[1]
-        q = random_quaternion()
-        goal_pose.target_pose.pose.orientation = Quaternion(q[0], q[1], q[2], q[3])
+        goal_pose.target_pose.pose.orientation = Quaternion(0.0, 0.0, 0.0, 1.0)
         nav_client.send_goal(goal_pose)
         nav_client.wait_for_result()
 
@@ -47,6 +47,7 @@ if __name__ == '__main__':
         while rospy.Time.now() - t0 < rospy.Duration(10):
             cmd = Twist()
             cmd.angular.z = 0.3
+            pub_vel.publish(cmd)
             rospy.sleep(0.1)
         trigger_client(False)
 
