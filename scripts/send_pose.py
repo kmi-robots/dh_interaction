@@ -16,7 +16,7 @@ url = "https://api.mksmart.org/sciroc-competition/kmirobots/sciroc-robot-locatio
 def query_pose(event):
     global pose_url
     try:
-        (trans, rot) = listener.lookupTransform('/odom', '/base_link', rospy.Time(0))
+        (trans, rot) = listener.lookupTransform('/map', '/base_link', rospy.Time(0))
         
         t0 = datetime.datetime.fromtimestamp(rospy.Time.now().secs)
         timestamp = t0.strftime("%Y-%m-%dT%H:%M:%SZ")
