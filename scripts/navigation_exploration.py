@@ -16,7 +16,7 @@ teamid = "kmirobots"
 teamkey = "0e920c05-e7a0-4745-9e94-eff7e1343b5d"
 
 # waypoints = [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]
-waypoints = [[-5.1, 6.86], [-9.12, 6.5], [-13.2, 6.02], [-17.2, 5.86], [0.0, 10.0]]
+waypoints = [[-1.5,-0.99],[-0.7, -3.5], [0.03, -3.5], [1.79, -4.34], [0.5, 0.98], [0.0, 0.0]]
 
 if __name__ == '__main__':
     rospy.init_node("simple_navigation_exploration")
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
         rospy.loginfo("starting exploration")
         trigger_client(True)
-        while rospy.Time.now() - t0 < rospy.Duration(10):
+        while rospy.Time.now() - t0 < rospy.Duration(20):
             cmd = Twist()
             cmd.angular.z = 0.3
             pub_vel.publish(cmd)
